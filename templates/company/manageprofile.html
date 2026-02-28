@@ -1,0 +1,114 @@
+{% extends 'company/companyhome.html' %}
+{% block body %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Company Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+{#  <style>#}
+{#    body {#}
+{#      background-color: #f7f9fc;#}
+{#    }#}
+{#    .card {#}
+{#      border-radius: 12px;#}
+{#      box-shadow: 0 3px 10px rgba(0,0,0,0.1);#}
+{#    }#}
+{#    .preview-img {#}
+{#      max-width: 180px;#}
+{#      max-height: 180px;#}
+{#      border-radius: 8px;#}
+{#      object-fit: cover;#}
+{#      display: none;#}
+{#      margin-top: 10px;#}
+{#    }#}
+{#  </style>#}
+</head>
+<body>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card p-4">
+          <h3 class="mb-4 text-center">Manage Company Profile</h3>
+          <form action="/myapp/manageprofile_post" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Company Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Enter company name" value="{{ val.name }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Enter email" value="{{ val.email }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Phone</label>
+                <input type="number"  name="phone" class="form-control" placeholder="Enter phone number" value="{{ val.phone }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Since</label>
+                <input type="text" name="since" class="form-control" placeholder="Company since" value="{{ val.since }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Place</label>
+                <input type="text" name="place" class="form-control" placeholder="Enter place" value="{{ val.place }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">District</label>
+                <input type="text" name="district" class="form-control" placeholder="Enter district" value="{{ val.district }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">State</label>
+                <input type="text" name="state" class="form-control" placeholder="Enter state" value="{{ val.state }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Pincode</label>
+                <input type="number"name="pincode" class="form-control" placeholder="Enter pincode" value="{{ val.pincode }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Latitude</label>
+                <input type="text" name="latitude" class="form-control" placeholder="Enter latitude" value="{{ val.latitude }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Longitude</label>
+                <input type="text"name="longitude" class="form-control" placeholder="Enter longitude" value="{{ val.longitude }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Status</label>
+                <input type="text" name="status"class="form-control" placeholder="Enter status" value="{{ val.status }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Company Photo</label>
+                <input type="file" name="photo"class="form-control" id="photoInput" accept="image/*" >
+                <img height="100" width="100"   src="{{ val.photo.url }}">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Proof</label>
+                <input type="file" name="proof" class="form-control" id="proofInput" accept="image/*,application/pdf" >
+                  <a  href="{{ val.proof.url }}">View Proof</a>
+              </div>
+
+              <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-primary px-4">Save Changes</button>
+                <button type="reset" class="btn btn-outline-secondary px-4 ms-2">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+{% endblock %}

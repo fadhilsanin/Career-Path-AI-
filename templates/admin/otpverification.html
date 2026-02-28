@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>OTP Verification</h2>
+<form action="/myapp/verifyotp_post/" method="POST">
+    <label for="otp">Enter the otp sent to your email</label>
+    <input type="number"  name="enter_otp" id="otp" required>
+    <input type="submit" value="Verify">
+</form>
+{% include 'admin/Msgalert.html' %}
+{% block content %}
+{% endblock %}
+</body>
+</html>

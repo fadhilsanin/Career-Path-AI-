@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Registration</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 10px 0;
+      vertical-align: middle;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      display: inline-block;
+      width: 100px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #5563DE;
+      box-shadow: 0 0 5px rgba(85, 99, 222, 0.4);
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #5563DE;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #4350c8;
+    }
+  </style>
+</head>
+<body>
+
+  <form action="/myapp/company_registraion_post/" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+    <h2>User Registration</h2>
+    <table>
+      <tr>
+        <td><label for="name">Name</label></td>
+        <td><input type="text" name="name" id="name" required></td>
+      </tr>
+      <tr>
+        <td><label for="email">Email</label></td>
+        <td><input type="email" name="email" id="email" required></td>
+      </tr>
+      <tr>
+        <td><label for="phone">Phone</label></td>
+        <td><input type="number" name="phone" id="phone" required></td>
+      </tr>
+      <tr>
+        <td><label for="since">Since</label></td>
+        <td><input type="text" name="since" id="since" required></td>
+      </tr>
+      <tr>
+        <td><label for="place">Place</label></td>
+        <td><input type="text" name="place" id="place" required></td>
+      </tr>
+      <tr>
+        <td><label for="pincode">Pincode</label></td>
+        <td><input type="number" name="pincode" id="pincode" required></td>
+      </tr>
+      <tr>
+        <td><label for="district">District</label></td>
+        <td><input type="text" name="district" id="district" required></td>
+      </tr>
+      <tr>
+        <td><label for="state">State</label></td>
+        <td><input type="text" name="state" id="state" required></td>
+      </tr>
+      <tr>
+        <td><label for="photo">Photo</label></td>
+        <td><input type="file" name="photo" id="photo" required></td>
+      </tr>
+      <tr>
+        <td><label for="proof">Proof</label></td>
+        <td><input type="file" name="proof" id="proof" required></td>
+      </tr>
+      <tr>
+        <td><label for="username">Username</label></td>
+        <td><input type="text" name="username" id="username" required></td>
+      </tr>
+      <tr>
+        <td><label for="password">Password</label></td>
+        <td><input type="password" name="password" id="password" required></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button type="submit">Register</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+</body>
+</html>

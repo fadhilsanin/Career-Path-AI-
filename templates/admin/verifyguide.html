@@ -1,0 +1,65 @@
+{% extends 'admin/admin_home new.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Applicant List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+<div class="container py-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center rounded-top-4">
+            <h4 class="mb-0">Applicant Details</h4>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>Qualification</th>
+                            <th>Experience</th>
+                            <th>verification</th>
+{#                            <th>Reject</th>#}
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                           {% for user in data %}
+                        <tr>
+
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.gender }}</td>
+                            <td>{{ user.DOB }}</td >
+                            <td>{{ user.phone }}</td>
+                            <td>{{ user.email }}</td>
+                            <TD>{{ user.qualifiication}}</TD>
+                                    <TD>{{ user.experience }}</td>
+
+                            {% if user.status != 'guide' and  user.status != 'Rejected'  %}
+                            <td>
+                                <a href="/myapp/Acceptguide/{{ user.id }}/" class="btn btn-success btn-sm">Accept</a>
+                            <a href="/myapp/Rejectguide/{{ user.id }}/" class="btn btn-danger btn-sm">Reject</a>
+                            </td>
+                                {% elif user.status == 'guide' %}
+                                <td>Accepted</td>
+                                {% else %}
+                                <td>Rejected</td>
+                        {% endif %}
+                        </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}.

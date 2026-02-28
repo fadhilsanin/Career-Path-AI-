@@ -1,0 +1,20 @@
+{% extends 'guide\index.html' %}
+{% block body %}
+<div style="max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; color: #333;">My Profile</h2>
+    <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+        <tr><th>Name:</th><td>{{ guide.name }}</td></tr>
+        <tr><th>Gender:</th><td>{{ guide.gender }}</td></tr>
+        <tr><th>Date of Birth:</th><td>{{ guide.DOB }}</td></tr>
+        <tr><th>Phone:</th><td>{{ guide.phone }}</td></tr>
+        <tr><th>Email:</th><td>{{ guide.email }}</td></tr>
+        <tr><th>Qualification:</th><td>{{guide.qualifiication }}</td></tr>
+        <tr><th>Experience:</th><td>{{ guide.experience }}</td></tr>
+        <tr><th>Status:</th><td>{{ guide.status }}</td></tr>
+    </table>
+
+    <div style="text-align:center; margin-top: 20px;">
+        <a href="/myapp/update_profile/" style="background: #4f46e5; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none;">Edit Profile</a>
+    </div>
+</div>
+{% endblock %}

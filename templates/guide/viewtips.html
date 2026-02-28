@@ -1,0 +1,107 @@
+{% extends 'guide/index.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Tips Dashboard</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #4f46e5;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f3f4f6;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4f46e5;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #3730a3;
+            text-decoration: underline;
+        }
+
+        .add-new {
+            display: inline-block;
+            background-color: #4f46e5;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-align: center;
+            margin: 20px auto;
+            font-weight: 500;
+        }
+
+        .add-new:hover {
+            background-color: #4338ca;
+        }
+
+        .actions {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tip Management</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Tip</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th colspan="2" class="actions">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in val %}
+            <tr>
+                <td>{{ i.tips }}</td>
+                <td>{{ i.discriptio}}</td>
+                <td>{{ i.date }}</td>
+{#                <td><a href="#">Edit</a></td>#}
+                <td><a href="/myapp/deletetips/{{ i.id }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="text-align:center;">
+        <a href="/myapp/guide_add_tips/" class="add-new">+ Add New Tip</a>
+    </div>
+</body>
+{% endblock %}

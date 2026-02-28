@@ -1,0 +1,49 @@
+{% extends 'company/companyhome.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{#  <form action="/myapp/interviews_schedule_post/" method="post" >#}
+{##}
+{#      <table>#}
+{#      <tr>#}
+{#      <td><label>Date</label><input type="date" name="date" required></td>#}
+{#    </tr>#}
+{#    <tr align="center">#}
+{#      <td><button type="submit">update</button> </td>#}
+{#    </tr>#}
+{#      </table>#}
+{#  </form>#}
+
+ <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card p-4">
+          <h3 class="mb-4 text-center">Schedule Interview</h3>
+          <form action="/myapp/interviews_schedule_post/" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+            <div class="row g-3">
+
+
+
+              <div class="col-md-6">
+                <label class="form-label">Update Date</label>
+                <input type="date" name="date" class="form-control" placeholder="Enter place" value="{{ val.place }}">
+              </div>
+
+              <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-primary px-4">Save Changes</button>
+                <button type="reset" class="btn btn-outline-secondary px-4 ms-2">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+{% endblock %}s

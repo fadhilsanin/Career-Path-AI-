@@ -1,0 +1,39 @@
+{% extends 'admin/admin_home new.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Send Reply</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center rounded-top-4">
+            <h4 class="mb-0">Send Reply</h4>
+        </div>
+
+        <div class="card-body">
+            <form action="/myapp/admin_send_reply_post/" method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Reply</label>
+                    <input type="text" class="form-control form-control-lg"
+                           name="reply" placeholder="Type your reply..." required>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</form>
+</body>
+{% endblock %}

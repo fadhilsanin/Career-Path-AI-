@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Path AI - Company Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4F46E5;
+            --secondary-color: #06B6D4;
+            --dark-bg: #1F2937;
+            --light-bg: #F9FAFB;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, var(--primary-color) 0%, #3730A3 100%);
+            min-height: 100vh;
+            color: white;
+            position: fixed;
+            width: 250px;
+            padding-top: 20px;
+        }
+
+        .sidebar .logo {
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 15px 25px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            color: white;
+            background: rgba(255,255,255,0.1);
+            border-left-color: var(--secondary-color);
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+
+        .top-bar {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-color);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary-custom:hover {
+            background: #3730A3;
+            transform: translateY(-2px);
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .badge-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .profile-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-briefcase"></i> Career Path AI
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="/myapp/manageprofile#abc">
+                <i class="fas fa-th-large me-2"></i> Manage profile
+            </a>
+            <a class="nav-link" href="/myapp/company_view_vacancy/#abc">
+                <i class="fas fa-briefcase me-2"></i> Job Vaccancy
+            </a>
+            <a class="nav-link" href="/myapp/company_view_application/#abc">
+                <i class="fas fa-users me-2"></i> View Application
+            </a>
+            <a class="nav-link" href="/myapp/company_view_review/#abc">
+                <i class="fas fa-file-alt me-2"></i> Review & Rating
+            </a>
+            <a class="nav-link" href="/myapp/company_change_password/#abc">
+                <i class="fas fa-building me-2"></i> Change Password
+            </a>
+            <a class="nav-link" href="/myapp/login_get/">
+                <i class="fas fa-building me-2"></i> Log Out
+            </a>
+
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+{#        <div class="top-bar">#}
+{#            <div>#}
+{#                <h4 class="mb-0">Welcome back, Tech Corp!</h4>#}
+{#                <small class="text-muted">Here's what's happening with your recruitment today</small>#}
+{#            </div>#}
+{#            <div class="d-flex gap-3 align-items-center">#}
+{#                <button class="btn btn-primary-custom"><a class="nav-link" href="/myapp/company_add_vaccancy/">#}
+{#                    <i class="fas fa-plus me-2"></i>Post New Job</a>#}
+{#                </button>#}
+{#                <div class="position-relative">#}
+{#                    <i class="fas fa-bell fa-lg text-secondary"></i>#}
+{#                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>#}
+{#                </div>#}
+{#                <div class="profile-dropdown">#}
+{#                    <div class="profile-img">TC</div>#}
+{#                    <span>Tech Corp</span>#}
+{#                </div>#}
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+{#        <div class="row mb-4">#}
+{#            <div class="col-md-3">#}
+{#                <div class="stat-card">#}
+{#                    <div class="d-flex justify-content-between align-items-center">#}
+{#                        <div>#}
+{#                            <p class="text-muted mb-1">Active Jobs</p>#}
+{#                            <h3 class="mb-0">12</h3>#}
+{#                        </div>#}
+{#                        <div class="stat-icon" style="background: #EEF2FF; color: var(--primary-color);">#}
+{#                            <i class="fas fa-briefcase"></i>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <small class="text-success"><i class="fas fa-arrow-up"></i> 2 new this week</small>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-md-3">#}
+{#                <div class="stat-card">#}
+{#                    <div class="d-flex justify-content-between align-items-center">#}
+{#                        <div>#}
+{#                            <p class="text-muted mb-1">Applications</p>#}
+{#                            <h3 class="mb-0">148</h3>#}
+{#                        </div>#}
+{#                        <div class="stat-icon" style="background: #ECFDF5; color: #10B981;">#}
+{#                            <i class="fas fa-file-alt"></i>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <small class="text-success"><i class="fas fa-arrow-up"></i> 24 pending review</small>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-md-3">#}
+{#                <div class="stat-card">#}
+{#                    <div class="d-flex justify-content-between align-items-center">#}
+{#                        <div>#}
+{#                            <p class="text-muted mb-1">Matched Profiles</p>#}
+{#                            <h3 class="mb-0">86</h3>#}
+{#                        </div>#}
+{#                        <div class="stat-icon" style="background: #FEF3C7; color: #F59E0B;">#}
+{#                            <i class="fas fa-user-check"></i>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <small class="text-info"><i class="fas fa-arrow-right"></i> AI recommended</small>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-md-3">#}
+{#                <div class="stat-card">#}
+{#                    <div class="d-flex justify-content-between align-items-center">#}
+{#                        <div>#}
+{#                            <p class="text-muted mb-1">Interviews</p>#}
+{#                            <h3 class="mb-0">15</h3>#}
+{#                        </div>#}
+{#                        <div class="stat-icon" style="background: #FCE7F3; color: #EC4899;">#}
+{#                            <i class="fas fa-calendar-check"></i>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <small class="text-warning"><i class="fas fa-clock"></i> 5 scheduled today</small>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+        <!-- Recent Applications -->
+{#        <div class="table-card mb-4">#}
+{#            <div class="d-flex justify-content-between align-items-center mb-3">#}
+{#                <h5 class="mb-0">Recent Applications</h5>#}
+{#                <button class="btn btn-sm btn-outline-primary">View All</button>#}
+{#            </div>#}
+{#            <div class="table-responsive">#}
+{#                <table class="table table-hover">#}
+{#                    <thead>#}
+{#                        <tr>#}
+{#                            <th>Candidate</th>#}
+{#                            <th>Position</th>#}
+{#                            <th>Match Score</th>#}
+{#                            <th>Applied Date</th>#}
+{#                            <th>Status</th>#}
+{#                            <th>Action</th>#}
+{#                        </tr>#}
+{#                    </thead>#}
+{#                    <tbody>#}
+{#                        <tr>#}
+{#                            <td>#}
+{#                                <div class="d-flex align-items-center">#}
+{#                                    <div class="profile-img me-2" style="width: 35px; height: 35px; font-size: 14px;">JS</div>#}
+{#                                    <div>#}
+{#                                        <div class="fw-bold">John Smith</div>#}
+{#                                        <small class="text-muted">Computer Science</small>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </td>#}
+{#                            <td>Software Engineer</td>#}
+{#                            <td><span class="badge bg-success">95%</span></td>#}
+{#                            <td>Nov 5, 2025</td>#}
+{#                            <td><span class="badge-status bg-warning text-dark">Under Review</span></td>#}
+{#                            <td>#}
+{#                                <button class="btn btn-sm btn-primary">Review</button>#}
+{#                            </td>#}
+{#                        </tr>#}
+{#                        <tr>#}
+{#                            <td>#}
+{#                                <div class="d-flex align-items-center">#}
+{#                                    <div class="profile-img me-2" style="width: 35px; height: 35px; font-size: 14px;">EJ</div>#}
+{#                                    <div>#}
+{#                                        <div class="fw-bold">Emma Johnson</div>#}
+{#                                        <small class="text-muted">Data Science</small>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </td>#}
+{#                            <td>Data Analyst</td>#}
+{#                            <td><span class="badge bg-success">92%</span></td>#}
+{#                            <td>Nov 4, 2025</td>#}
+{#                            <td><span class="badge-status bg-info text-white">Shortlisted</span></td>#}
+{#                            <td>#}
+{#                                <button class="btn btn-sm btn-primary">Review</button>#}
+{#                            </td>#}
+{#                        </tr>#}
+{#                        <tr>#}
+{#                            <td>#}
+{#                                <div class="d-flex align-items-center">#}
+{#                                    <div class="profile-img me-2" style="width: 35px; height: 35px; font-size: 14px;">MB</div>#}
+{#                                    <div>#}
+{#                                        <div class="fw-bold">Mike Brown</div>#}
+{#                                        <small class="text-muted">Business Admin</small>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </td>#}
+{#                            <td>Project Manager</td>#}
+{#                            <td><span class="badge bg-warning">78%</span></td>#}
+{#                            <td>Nov 3, 2025</td>#}
+{#                            <td><span class="badge-status bg-secondary text-white">New</span></td>#}
+{#                            <td>#}
+{#                                <button class="btn btn-sm btn-primary">Review</button>#}
+{#                            </td>#}
+{#                        </tr>#}
+{#                    </tbody>#}
+{#                </table>#}
+{#            </div>#}
+{#        </div>#}
+
+        <!-- Active Job Postings -->
+        <div class="row" id="abc">
+                {% block body %}
+                {% endblock %}
+            <div class="col-md-6">
+
+{#                <div class="table-card">#}
+{#                    <h5 class="mb-3">Active Job Postings</h5>#}
+{#                    <div class="list-group list-group-flush">#}
+{#                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">#}
+{#                            <div>#}
+{#                                <h6 class="mb-1">Senior Frontend Developer</h6>#}
+{#                                <small class="text-muted">45 applications • Posted 5 days ago</small>#}
+{#                            </div>#}
+{#                            <button class="btn btn-sm btn-outline-primary">Manage</button>#}
+{#                        </div>#}
+{#                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">#}
+{#                            <div>#}
+{#                                <h6 class="mb-1">UX/UI Designer</h6>#}
+{#                                <small class="text-muted">28 applications • Posted 3 days ago</small>#}
+{#                            </div>#}
+{#                            <button class="btn btn-sm btn-outline-primary">Manage</button>#}
+{#                        </div>#}
+{#                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">#}
+{#                            <div>#}
+{#                                <h6 class="mb-1">Marketing Specialist</h6>#}
+{#                                <small class="text-muted">32 applications • Posted 1 week ago</small>#}
+{#                            </div>#}
+{#                            <button class="btn btn-sm btn-outline-primary">Manage</button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-md-6">#}
+{#                <div class="table-card">#}
+{#                    <h5 class="mb-3">AI-Recommended Candidates</h5>#}
+{#                    <div class="list-group list-group-flush">#}
+{#                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">#}
+{#                            <div>#}
+{#                                <h6 class="mb-1">Sarah Williams <span class="badge bg-success ms-2">98% Match</span></h6>#}
+{#                                <small class="text-muted">Full Stack Developer • 3 years exp</small>#}
+{#                            </div>#}
+{#                            <button class="btn btn-sm btn-success">View Profile</button>#}
+{#                        </div>#}
+{#                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">#}
+{#                            <div>#}
+{#                                <h6 class="mb-1">David Chen <span class="badge bg-success ms-2">96% Match</span></h6>#}
+{#                                <small class="text-muted">Backend Engineer • 2 years exp</small>#}
+{#                            </div>#}
+{#                            <button class="btn btn-sm btn-success">View Profile</button>#}
+{#                        </div>#}
+{#                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">#}
+{#                            <div>#}
+{#                                <h6 class="mb-1">Lisa Anderson <span class="badge bg-warning ms-2">89% Match</span></h6>#}
+{#                                <small class="text-muted">Product Designer • Fresh Graduate</small>#}
+{#                            </div>#}
+{#                            <button class="btn btn-sm btn-success">View Profile</button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

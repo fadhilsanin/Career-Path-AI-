@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guide Registration</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #74b9ff, #a29bfe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2d3436;
+      margin-bottom: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 10px 0;
+      color: #2d3436;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dcdde1;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #0984e3;
+      box-shadow: 0 0 5px rgba(9, 132, 227, 0.4);
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .gender-options {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    button {
+      width: 100%;
+      background-color: #0984e3;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #74b9ff;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Guide Registration</h2>
+    <form action="/myapp/guide_register_post/" method="post">
+      <table>
+        <tr>
+          <td>
+            <label>Name</label>
+            <input type="text" name="name" required>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>Gender</label>
+            <div class="gender-options">
+              <label><input type="radio" name="gender" value="male" required> Male</label>
+              <label><input type="radio" name="gender" value="female"> Female</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>Date of Birth</label>
+            <input type="date" name="DOB" required>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>Phone</label>
+            <input type="number" name="phone" required>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>Email</label>
+            <input type="email" name="email" required>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>Qualification</label>
+            <input type="text" name="qualification" required>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>Experience</label>
+            <input type="text" name="experience">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>Username</label>
+            <input type="text" name="username" required>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label>Password</label>
+            <input type="password" name="password" required>
+          </td>
+        </tr>
+
+        <tr>
+          <td><button type="submit">Save</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+</body>
+</html>
